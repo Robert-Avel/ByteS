@@ -22,8 +22,6 @@ bool ByteS::expand(size_t size) {
 
     delete [] old_d;
 
-    std::cout << "Expand: " << size << "\n";
-    std::cout << "Size: " << inner_size << " | Allocated: " << allocated << "\n\n";
 
     return true;
 }
@@ -51,8 +49,6 @@ bool ByteS::collapse(size_t size) {
         inner_size = allocated;
     }
 
-    std::cout << "Colapse: " << size << "\n";
-    std::cout << "Size: " << inner_size << " | Allocated: " << allocated << "\n\n";
 
     return true;
 }
@@ -108,9 +104,6 @@ ByteS& ByteS::append(char* _src, size_t __s) {
     memcpy(data_ptr, _src, __s);
     inner_size += __s;
 
-    std::cout << "Appended: " << __s << "\n";
-    std::cout << "Size: " << inner_size << " | Allocated: " << allocated << "\n\n";
-
     return *this;
 }
 
@@ -159,9 +152,6 @@ bool ByteS::pop(char* __dest, size_t __s) {
     memcpy(__dest, data_ptr, __s);
     inner_size -= __s;
     memmove(_data, _data + __s, inner_size);
-
-    std::cout << "Poped: " << __s << "\n";
-    std::cout << "Size: " << inner_size << " | Allocated: " << allocated << "\n\n";
 
     collapse();
 
